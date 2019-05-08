@@ -96,26 +96,26 @@ public class Convert {
                 double resultX = myGT[0] + Xpoint * myGT[1] + Yline * myGT[2];
                 double resultY = myGT[3] + Xpoint * myGT[4] + Yline * myGT[5];
 				
-				SpatialReference s_srs = new SpatialReference();
-				SpatialReference t_srs = new SpatialReference();
-				s_srs.ImportFromEPSG(4326);
-				t_srs.ImportFromEPSG(3857);
+                SpatialReference s_srs = new SpatialReference();
+                SpatialReference t_srs = new SpatialReference();
+                s_srs.ImportFromEPSG(4326);
+                t_srs.ImportFromEPSG(3857);
 
-				CoordinateTransformation ct =  CoordinateTransformation.CreateCoordinateTransformation(s_srs, t_srs);
+                CoordinateTransformation ct =  CoordinateTransformation.CreateCoordinateTransformation(s_srs, t_srs);
 
-				double[] epsg3857 = ct.TransformPoint(resultX, resultY);
+                double[] epsg3857 = ct.TransformPoint(resultX, resultY);
 				
-				// System.out.println(String.format("[%.6f %.6f]", epsg3857[0], epsg3857[1]));
-
+                // System.out.println(String.format("[%.6f %.6f]", epsg3857[0], epsg3857[1]));
                 ////////////////////////////////////////////////////////////////
-				// If you want EPSG:3857 use a line below.
-				//
-				//out.write(String.format("%.8f, %.8f", epsg3857[0], epsg3857[1]));
-				
-				//
-				// If you want EPSG:4326 use a line below.
+		    
+                // If you want EPSG:3857 use a line below.
+                //
+                //out.write(String.format("%.8f, %.8f", epsg3857[0], epsg3857[1]));
+                //
+		    
+                // If you want EPSG:4326 use a line below.
                 out.write(String.format("%f, %f", resultX, resultY));
-				
+
                 out.newLine();
                 ////////////////////////////////////////////////////////////////
             }
